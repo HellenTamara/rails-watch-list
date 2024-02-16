@@ -15,14 +15,14 @@
   <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
   <% end %>
     <div class="card-product-infos">
-
     <h4><%= bookmark.movie.title %></h4>
     <p><%= bookmark.movie.overview %> </p>
-
     </div>
+    <div class="delete-btn">
          <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <i class="fa-solid fa-trash"></i>
+          <i class="fa-solid fa-trash text-white"></i>
          <% end %>
+    </div>
   </div>
 
   <% end %>
