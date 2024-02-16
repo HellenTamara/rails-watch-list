@@ -6,7 +6,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
-    @movies = @list.movies
+    @movies = Movie.where.not(id: @list.movies).order(:title)
   end
 
   def new

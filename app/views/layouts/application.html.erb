@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RailsWatchList</title>
+    <title>MovieMix</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Limelight&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,10 +14,10 @@
   </head>
 
   <body>
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon border-bottom border-body">
   <div class="container-fluid">
     <%= link_to lists_path, class: "navbar-brand" do %>
-      <i class="fa-solid fa-clapperboard"></i>
+      <p class="logo-m">M</p>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
