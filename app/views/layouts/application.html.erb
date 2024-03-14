@@ -12,24 +12,27 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon border-bottom border-body">
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <%# <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon border-bottom border-body">
       <div class="container-fluid">
         <%= link_to lists_path, class: "navbar-brand" do %>
-          <p class="logo-m">M</p>
-        <% end %>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto">
+          <%# <p class="logo-m">M</p> %>
+        <%# end %>
+        <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> %>
+          <%# <span class="navbar-toggler-icon"></span> %>
+        <%# </button> %>
+        <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
+          <%# <ul class="navbar-nav me-auto"> %>
             <%# if user_signed_in? %>
-            <li class="nav-item">
-              <%= link_to "Add a List", new_list_path, class: "nav-link" %>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+            <%# <li class="nav-item"> %>
+              <%# <%= link_to "Add a List", new_list_path, class: "nav-link" %>
+            <%# </li> %>
+          <%# </ul> %>
+        <%# </div> %>
+      <%# </div> %>
+    <%# </div> %>
     <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
