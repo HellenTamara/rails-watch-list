@@ -1,4 +1,67 @@
-Movie.create(title: "Wonder Woman 1984", overview: "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s", poster_url: "https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg", rating: 6.9)
-Movie.create(title: "The Shawshank Redemption", overview: "Framed in the 1940s for double murder, upstanding banker Andy Dufresne begins a new life at the Shawshank prison", poster_url: "https://image.tmdb.org/t/p/original/q6y0Go1tsGEsmtFryDOJo3dEmqu.jpg", rating: 8.7)
-Movie.create(title: "Titanic", overview: "101-year-old Rose DeWitt Bukater tells the story of her life aboard the Titanic.", poster_url: "https://image.tmdb.org/t/p/original/9xjZS2rlVxm8SFx8kPC3aIGCOYQ.jpg", rating: 7.9)
-Movie.create(title: "Ocean's Eight", overview: "Debbie Ocean, a criminal mastermind, gathers a crew of female thieves to pull off the heist of the century.", poster_url: "https://image.tmdb.org/t/p/original/MvYpKlpFukTivnlBhizGbkAe3v.jpg", rating: 7.0)
+require 'uri'
+require 'net/http'
+require "json"
+
+puts "Destroying previous data..."
+List.destroy_all
+Movie.destroy_all
+
+puts "Calling API..."
+url = URI("https://tmdb.lewagon.com/movie/top_rated")
+
+http = Net::HTTP.new(url.host, url.port)
+http.use_ssl = true
+
+request = Net::HTTP::Get.new(url)
+request["accept"] = 'application/json'
+
+response = http.request(request)
+parsed = JSON.parse(response.read_body)
+movies = parsed["results"]
+
+puts "Creating movies..."
+movies.each do |movie|
+  created_movie = Movie.create(title: movie["title"], overview: movie["overview"], rating: movie["vote_average"], poster_url: "https://image.tmdb.org/t/p/w500/#{movie["poster_path"]}")
+
+  url = URI("https://tmdb.lewagon.com/movie/#{movie["id"]}")
+  http = Net::HTTP.new(url.host, url.port)
+  http.use_ssl = true
+  request = Net::HTTP::Get.new(url)
+  request["accept"] = 'application/json'
+  response = http.request(request)
+  parsed = JSON.parse(response.read_body)
+  genres = parsed["genres"]
+
+  all_genres = []
+  genres.each do |genre|
+    all_genres.push(genre["name"])
+  end
+
+  created_movie.genres = all_genres
+  created_movie.save
+end
+
+puts "Getting all categories..."
+categories = []
+Movie.all.each do |movie|
+  categories.concat(movie.genres)
+end
+
+categories = categories.uniq
+
+puts "Creating lists from categories"
+categories.each do |category|
+  list = List.create(name: category)
+end
+
+puts "Creating bookmarks for lists"
+List.all.each do |list|
+  Movie.all.each do |movie|
+    bookmark = Bookmark.new(list_id: list.id)
+    if movie.genres.include?(list.name)
+      bookmark.movie = movie
+      bookmark.comment = "auto added movie"
+      bookmark.save
+    end
+  end
+end

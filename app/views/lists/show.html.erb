@@ -1,34 +1,27 @@
-
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : image_path("movie.jpg") %>);">
-    <h1 class="text-light"><%= @list.name %></h1>
+  <h1 class="text-light"><%= @list.name %></h1>
 </div>
-
-
-
 <div class="container mt-4 mb-4">
   <h3>Movies on this list:</h3>
-<% @list.bookmarks.each do |bookmark| %>
-  <div class="card-product mt-3 mb-3">
-  <% if bookmark.movie.poster_url %>
-   <%= image_tag bookmark.movie.poster_url %>
-  <% else %>
-  <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
-  <% end %>
-    <div class="card-product-infos">
-    <h4><%= bookmark.movie.title %></h4>
-    <p><%= bookmark.movie.overview %> </p>
-    </div>
-    <div class="delete-btn">
-         <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-product mt-3 mb-3">
+      <% if bookmark.movie.poster_url %>
+        <%= image_tag bookmark.movie.poster_url %>
+      <% else %>
+        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+      <% end %>
+      <div class="card-product-infos">
+        <h4><%= bookmark.movie.title %></h4>
+        <p><%= bookmark.movie.overview %> </p>
+      </div>
+      <div class="delete-btn">
+        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
           <i class="fa-solid fa-trash text-white"></i>
-         <% end %>
+        <% end %>
+      </div>
     </div>
-  </div>
-
   <% end %>
 </div>
-
-
 <div class="container">
   <h3>Add a movie to the list</h3>
   <%= render "bookmarks/form" %>
