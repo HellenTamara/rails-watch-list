@@ -15,7 +15,6 @@ Check out the live demo of MovieMix [here](https://movie-mix-2c56b083c637.heroku
 
 - **Create Movie Lists:** Build your own movie lists tailored to your preferences.
 - **Add/Remove Movies:** Easily add or remove movies from your lists with just a few clicks.
-- **Customizable:** Personalize your movie lists with titles, descriptions, and cover images.
 - **User Accounts:** Sign up for an account to save your movie lists and access them from anywhere.
 - **Responsive Design:** Enjoy a seamless user experience across various devices and screen sizes.
 
