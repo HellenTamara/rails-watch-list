@@ -17,22 +17,23 @@
     <%# <div class="navbar navbar-expand-sm navbar-dark navbar-lewagon border-bottom border-body">
       <div class="container-fluid">
         <%= link_to lists_path, class: "navbar-brand" do %>
-          <%# <p class="logo-m">M</p> %>
-        <%# end %>
-        <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> %>
-          <%# <span class="navbar-toggler-icon"></span> %>
-        <%# </button> %>
-        <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
-          <%# <ul class="navbar-nav me-auto"> %>
-            <%# if user_signed_in? %>
-            <%# <li class="nav-item"> %>
-              <%# <%= link_to "Add a List", new_list_path, class: "nav-link" %>
-            <%# </li> %>
-          <%# </ul> %>
-        <%# </div> %>
+      <%# <p class="logo-m">M</p> %>
+      <%# end %>
+      <%# <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"> %>
+      <%# <span class="navbar-toggler-icon"></span> %>
+      <%# </button> %>
+      <%# <div class="collapse navbar-collapse" id="navbarSupportedContent"> %>
+      <%# <ul class="navbar-nav me-auto"> %>
+      <%# if user_signed_in? %>
+      <%# <li class="nav-item"> %>
+      <%# <%= link_to "Add a List", new_list_path, class: "nav-link" %>
+      <%# </li> %>
+      <%# </ul> %>
       <%# </div> %>
-    <%# </div> %>
-    <%= yield %>
-    <%= render "shared/footer" %>
-  </body>
-</html>
+      <%# </div> %>
+      <%# </div> %>
+      <%= yield %>
+      <%= render "shared/footer" %>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    </body>
+  </html>
