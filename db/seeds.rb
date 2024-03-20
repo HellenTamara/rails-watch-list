@@ -5,6 +5,10 @@ require "json"
 puts "Destroying previous data..."
 List.destroy_all
 Movie.destroy_all
+User.destroy_all
+
+puts "Creating public user..."
+public = User.create(email: "public@user.com", password: "123123")
 
 puts "Calling API..."
 url = URI("https://tmdb.lewagon.com/movie/top_rated")
@@ -51,7 +55,7 @@ categories = categories.uniq
 
 puts "Creating lists from categories"
 categories.each do |category|
-  list = List.create(name: category)
+  list = List.create(name: category, user_id: public.id)
 end
 
 puts "Creating bookmarks for lists"
@@ -65,5 +69,3 @@ List.all.each do |list|
     end
   end
 end
-
-# 
