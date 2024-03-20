@@ -1,1 +1,16 @@
-<p>test</p>
+  <div class="header">
+    <h1>MovieMix</h1>
+    <h3>Craft Your Cinematic Universe</h3>
+  </div>
+  <div class="container text-align-center mt-5 mb-5">
+    <h3>Lists</h3>
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : Bookmark.where(list_id: list.id).sample.movie.poster_url %>)">
+          <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
+        </div>
+      <% end %>
+    </div>
+    <h4>Create an account to start creating your own lists!<i class="fa-solid fa-arrow-turn-up"></i></h4>
+  </div>
+

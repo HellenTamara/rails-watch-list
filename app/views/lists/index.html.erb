@@ -6,10 +6,25 @@
   <h3>Lists</h3>
   <div class="cards">
     <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : Bookmark.where(list_id: list.id).sample.movie.poster_url %>)">
+      <%if list.photo.attached?
+          image = cl_image_path(list.photo.key)
+        elsif list.movies.count > 0
+          image = Bookmark.where(list_id: list.id).sample.movie.poster_url
+        else
+          image = image_path('movie.jpg')
+        end %>
+      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= image %>)">
         <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
+        <div class="list-delete">
+          <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+            <i class="fa-solid fa-trash text-white"></i>
+          <% end %>
+        </div>
       </div>
     <% end %>
   </div>
-  <h4>Create an account to start creating your own lists!<i class="fa-solid fa-arrow-turn-up"></i></h4>
+  <div class="container mt-5 p-5">
+    <h1>Add new list: </h1>
+    <%= render "form" %>
+  </div>
 </div>

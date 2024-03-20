@@ -12,6 +12,7 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   border-radius: 5px;
   box-shadow: 0 0 15px rgba(255,255,255, 0.2);
+  position: relative;
 }
 
 .cards {
@@ -93,4 +94,11 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+.list-delete a i{
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 20px;
 }
