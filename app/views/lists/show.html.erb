@@ -27,7 +27,8 @@
     </div>
   <% end %>
 </div>
-<div class="container">
-  <h3>Add a movie to the list</h3>
+<% if current_user.nil? %>
+<p></p>
+<% else %>
   <%= render "bookmarks/form" %>
-</div>
+<% end %>
