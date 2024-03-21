@@ -1,5 +1,12 @@
-<%= simple_form_for [@list, @bookmark] do |f| %>
-<%= f.association :movie, collection: @movies, include_blank: false %>
-<%= f.input :comment %>
-<%= f.submit %>
-<% end %>
+<div class="container">
+  <h3>Add a movie to the list</h3>
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+    <%= f.association :movie, collection: @movies, include_blank: false %>
+    <%= f.input :comment %>
+    <%= f.submit %>
+  <% end %>
+</div>
+<%# <form action="get" data-controller="movies" data-action="submit->movies#search">
+  <input type="text" data-movies-target="title">
+  <input type="submit">
+</form> %>

@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [ :show ]
   def index
     @list = List.new
     @user = current_user
