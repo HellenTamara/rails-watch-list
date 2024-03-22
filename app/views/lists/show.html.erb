@@ -1,6 +1,11 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : image_path("movie.jpg") %>);">
   <h1 class="text-light"><%= @list.name %></h1>
-  <div class="list-delete">
+  <div class="list-delete <%=
+  if current_user.nil? || @list.user.id != current_user
+   " hide"
+   else
+    " "
+  end %> ">
     <%= link_to list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
       <i class="fa-solid fa-trash text-white"></i>
     <% end %>
@@ -19,7 +24,12 @@
         <h4><%= bookmark.movie.title %></h4>
         <p><%= bookmark.movie.overview %> </p>
       </div>
-      <div class="delete-btn">
+      <div class="delete-btn <%=
+      if current_user.nil? || @list.user != current_user
+        " hide"
+      else
+        " "
+      end  %>">
         <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
           <i class="fa-solid fa-trash text-white"></i>
         <% end %>
@@ -28,7 +38,7 @@
   <% end %>
 </div>
 <% if current_user.nil? %>
-<p></p>
+  <p></p>
 <% else %>
   <%= render "bookmarks/form" %>
 <% end %>
