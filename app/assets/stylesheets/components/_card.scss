@@ -1,3 +1,4 @@
+// List iindex
 .card-category {
   background-size: cover;
   background-position: center;
@@ -62,43 +63,90 @@
   right: 20px;
 }
 
-.card-product {
-  overflow: hidden;
-  height: 120px;
-  background: black;
-  box-shadow: 0 0 15px rgba(255,255,255,0.2);
-  display: flex;
-  align-items: center;
-  position: relative;
-}
+// .card-product {
+//   overflow: hidden;
+//   height: 120px;
+//   background: black;
+//   box-shadow: 0 0 15px rgba(255,255,255,0.2);
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+// }
 
-.card-product img {
-  height: 100%;
-  width: 120px;
-  object-fit: cover;
-}
+// .card-product img {
+//   height: 100%;
+//   width: 120px;
+//   object-fit: cover;
+// }
 
-.card-product h2 {
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0;
-}
+// .card-product h2 {
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin: 0;
+//   color: black;
+// }
 
-.card-product p {
-  font-size: 12px;
-  line-height: 1.4;
-  opacity: .7;
-  margin-bottom: 0;
-  margin-top: 8px;
-}
+// .card-product p {
+//   font-size: 12px;
+//   line-height: 1.4;
+//   opacity: .7;
+//   margin-bottom: 0;
+//   margin-top: 8px;
+//   color: black;
 
-.card-product .card-product-infos {
-  padding: 16px;
-}
+// }
 
+// .card-product .card-product-infos {
+//   padding: 16px;
+// }
+
+// List show
 .list-delete a i{
   position: absolute;
   top: 1rem;
   right: 1rem;
   font-size: 20px;
+}
+
+
+.card-trip {
+  overflow: hidden;
+  background: black;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.card-trip > img {
+  height: 20rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-trip h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-trip p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-trip .card-trip-infos {
+  padding: 13px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+  color: white;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
 }

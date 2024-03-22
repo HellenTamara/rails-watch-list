@@ -13,31 +13,25 @@
 </div>
 <div class="container mt-4 mb-4">
   <h3>Movies on this list:</h3>
-  <% @list.bookmarks.each do |bookmark| %>
-    <div class="card-product mt-3 mb-3">
-      <% if bookmark.movie.poster_url %>
-        <%= image_tag bookmark.movie.poster_url %>
-      <% else %>
-        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
-      <% end %>
-      <div class="card-product-infos">
-        <h4><%= bookmark.movie.title %></h4>
-        <p><%= bookmark.movie.overview %> </p>
-      </div>
-      <div class="delete-btn <%=
-      if current_user.nil? || @list.user != current_user
-        " hide"
-      else
-        " "
-      end  %>">
-        <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-          <i class="fa-solid fa-trash text-white"></i>
+  <div class="cards">
+    <% @list.bookmarks.each do |bookmark| %>
+      <div class="card-trip">
+        <% if bookmark.movie.poster_url %>
+          <%= image_tag bookmark.movie.poster_url %>
+        <% else %>
+          <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
         <% end %>
+        <div class="card-trip-infos">
+          <div>
+            <h2><%= bookmark.movie.title %></h2>
+            <p>Rating: <%= bookmark.movie.rating.to_f.ceil(1) %>/10</p>
+          </div>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
-<% if current_user.nil? %>
+<% if current_user.nil? || @list.user.id != current_user %>
   <p></p>
 <% else %>
   <%= render "bookmarks/form" %>
