@@ -1,1 +1,30 @@
 // Specific CSS for your home-page
+.cta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+  margin: 5rem auto 0 auto;
+  width: 80%;
+
+  p {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    text-decoration: none;
+    padding: 10px 16px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+  }
+}
+
+.lists {
+  h3 {
+    margin: 1rem 0 1.5rem 0;
+  }
+}
