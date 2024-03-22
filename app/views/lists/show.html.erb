@@ -14,6 +14,22 @@
 <div class="container mt-4 mb-4">
   <h3>Movies on this list:</h3>
   <% @list.bookmarks.each do |bookmark| %>
+    <div class="card-trip">
+       <% if bookmark.movie.poster_url %>
+        <%= image_tag bookmark.movie.poster_url %>
+      <% else %>
+        <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+      <% end %>
+      <div class="card-trip-infos">
+        <div>
+          <h2><%= bookmark.movie.title %></h2>
+          <p><%= bookmark.movie.overview %></p>
+        </div>
+        <h2 class="card-trip-pricing">£99.99</h2>
+      </div>
+    </div>
+
+
     <div class="card-product mt-3 mb-3">
       <% if bookmark.movie.poster_url %>
         <%= image_tag bookmark.movie.poster_url %>
