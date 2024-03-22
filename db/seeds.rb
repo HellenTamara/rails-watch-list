@@ -10,7 +10,8 @@ User.destroy_all
 puts "Creating public user..."
 public = User.create(email: "public@user.com", password: "123123")
 
-movie_list = ["Avatar",
+movie_list = [
+"Avatar",
 "Avengers: Endgame",
 "Avatar: The Way of Water",
 "Titanic",
@@ -98,7 +99,6 @@ movie_list = ["Avatar",
 "Black Panther: Wakanda Forever",
 "Inside Out",
 "Venom",
-"Thor: Ragnarok",
 "The Twilight Saga: Breaking Dawn, Part 2",
 "Guardians of the Galaxy Vol. 3",
 "Inception",
