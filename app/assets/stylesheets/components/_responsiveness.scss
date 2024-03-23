@@ -1,0 +1,24 @@
+@media(max-width: 430px) {
+  // Header
+  .header {
+    height: 35vh;
+
+    h1 {
+      font-size: 65px;
+    }
+
+    h3 {
+      font-size: 15px;
+    }
+  }
+
+  // List display
+  .phone-list {
+    display: block;
+  }
+
+  .pc-lists {
+    display: none;
+  }
+
+}

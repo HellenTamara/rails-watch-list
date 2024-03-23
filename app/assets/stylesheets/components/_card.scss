@@ -109,6 +109,10 @@
 }
 
 
+.pc-lists {
+  display: block;
+}
+
 .card-trip {
   overflow: hidden;
   background: black;
@@ -149,4 +153,31 @@
   right: 16px;
   top: -20px;
   width: 40px;
+}
+
+
+.phone-list {
+  display: none;
+}
+
+.movies-scroll {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  width: 100%;
+  padding-left: 0;
+
+  .card-trip {
+    width: 250px;
+    height: 393px;
+    margin-right: 10px;
+  }
+
+  li {
+    list-style: none;
+  }
+}
+
+.movies-scroll::-webkit-scrollbar {
+  display: none;
 }
