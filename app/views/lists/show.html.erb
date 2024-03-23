@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= @list.photo.attached? ? cl_image_path(@list.photo.key) : image_path("movie.jpg") %>);">
   <h1 class="text-light"><%= @list.name %></h1>
   <div class="list-delete <%=
-  if current_user.nil? || @list.user.id != current_user
+  if current_user.nil? || @list.user != current_user
    " hide"
    else
     " "
@@ -12,8 +12,6 @@
   </div>
 </div>
 <div class="container mt-4 mb-4">
-
-
   <h3>Movies on this list:</h3>
   <div class="cards">
     <% @list.bookmarks.each do |bookmark| %>
@@ -33,7 +31,7 @@
     <% end %>
   </div>
 </div>
-<% if current_user.nil? || @list.user.id != current_user %>
+<% if current_user.nil? || @list.user != current_user %>
   <p></p>
 <% else %>
   <%= render "bookmarks/form" %>

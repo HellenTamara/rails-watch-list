@@ -39,8 +39,8 @@
   </div>
 </div>
 <div class="cta">
-  <p>Sign up to your account to start creating your own lists!</p>
   <% if current_user.nil? %>
+    <p>Sign up to your account to start creating your own lists!</p>
     <%= link_to "Get Started", new_user_registration_path %>
   <% end %>
 </div>
