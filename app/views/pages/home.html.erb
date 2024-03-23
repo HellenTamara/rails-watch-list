@@ -4,11 +4,37 @@
 </div>
 <div class="container text-align-center mb-5 lists">
   <h3>Reccommended Lists</h3>
-  <div class="cards">
+  <div class="pc-lists">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : Bookmark.where(list_id: list.id).sample.movie.poster_url %>)">
+          <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="phone-list">
     <% @lists.each do |list| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= list.photo.attached? ? cl_image_path(list.photo.key) : Bookmark.where(list_id: list.id).sample.movie.poster_url %>)">
-        <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
-      </div>
+      <p><%= list.name %></p>
+      <ul class="movies-scroll">
+        <% list.bookmarks.each do |bookmark| %>
+          <li>
+            <div class="card-trip">
+              <% if bookmark.movie.poster_url %>
+                <%= image_tag bookmark.movie.poster_url %>
+              <% else %>
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= bookmark.movie.title %></h2>
+                  <p>Rating: <%= bookmark.movie.rating.to_f.ceil(1) %>/10</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
 </div>
