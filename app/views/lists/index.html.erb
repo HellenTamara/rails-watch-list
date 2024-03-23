@@ -4,23 +4,66 @@
 </div>
 <div class="container text-align-center mt-5 mb-5">
   <h3>Lists</h3>
-  <div class="cards">
-    <% @lists.each do |list| %>
-      <%if list.photo.attached?
+  <div class="pc-lists">
+    <div class="cards">
+      <% @lists.each do |list| %>
+        <%if list.photo.attached?
           image = cl_image_path(list.photo.key)
         elsif list.movies.count > 0
           image = Bookmark.where(list_id: list.id).sample.movie.poster_url
         else
           image = image_path('movie.jpg')
         end %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= image %>)">
-        <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
-        <div class="list-delete">
-          <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
-            <i class="fa-solid fa-trash text-white"></i>
-          <% end %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= image %>)">
+          <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
+          <div class="list-delete">
+            <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+              <i class="fa-solid fa-trash text-white"></i>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="phone-list">
+    <% @lists.each do |list| %>
+      <p><%= list.name %></p>
+      <ul class="movies-scroll">
+        <li>
+          <%if list.photo.attached?
+          image = cl_image_path(list.photo.key)
+        elsif list.movies.count > 0
+          image = Bookmark.where(list_id: list.id).sample.movie.poster_url
+        else
+          image = image_path('movie.jpg')
+        end %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url( <%= image %>)">
+            <p><%= link_to list.name, list_path(list), class: "text-decoration-none text-white" %></p>
+            <div class="list-delete">
+              <%= link_to list_path(list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do%>
+                <i class="fa-solid fa-trash text-white"></i>
+              <% end %>
+            </div>
+          </div>
+        </li>
+        <% list.bookmarks.shuffle.each do |bookmark| %>
+          <li>
+            <div class="card-trip">
+              <% if bookmark.movie.poster_url %>
+                <%= image_tag bookmark.movie.poster_url %>
+              <% else %>
+                <%= image_tag 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPQDYau3Hs4-xw1i8jVSUY4BlF4FLmg8lQqg&usqp=CAU' %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div>
+                  <h2><%= bookmark.movie.title %></h2>
+                  <p>Rating: <%= bookmark.movie.rating.to_f.ceil(1) %>/10</p>
+                </div>
+              </div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
     <% end %>
   </div>
   <div class="container mt-5 p-5">

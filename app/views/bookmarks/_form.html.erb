@@ -3,7 +3,7 @@
   <%= simple_form_for [@list, @bookmark] do |f| %>
     <%= f.association :movie, collection: @movies, include_blank: false %>
     <%= f.input :comment %>
-    <%= f.submit %>
+    <%= f.submit "Add movie" %>
   <% end %>
 </div>
 <%# <form action="get" data-controller="movies" data-action="submit->movies#search">
