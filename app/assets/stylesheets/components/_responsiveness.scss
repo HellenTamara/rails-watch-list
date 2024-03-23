@@ -41,7 +41,21 @@
     font-size: 15px;
   }
   // navbar
-  .nav-item.dropdown {
-    
+  .nav-item.dropdown .avatar{
+    display: none;
   }
+
+  .nav-item.dropdown .log-out{
+    display: block;
+    text-decoration: none;
+    background: none;
+    border: 0;
+
+    a {
+      color: #8C8C8C;
+      padding: 0 0 1rem 0;
+    }
+  }
+
+
 }
