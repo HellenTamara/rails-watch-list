@@ -17,7 +17,7 @@
     <% @lists.each do |list| %>
       <p><%= list.name %></p>
       <ul class="movies-scroll">
-        <% list.bookmarks.each do |bookmark| %>
+        <% list.bookmarks.shuffle.each do |bookmark| %>
           <li>
             <div class="card-trip">
               <% if bookmark.movie.poster_url %>
