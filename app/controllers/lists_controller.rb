@@ -10,6 +10,9 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
     @movies = Movie.where.not(id: @list.movies).order(:title)
+    if params[:query].present?
+      @movies = @movies.where("title ILIKE ?", "%#{params[:query]}%")
+    end
   end
 
   def create
