@@ -9,7 +9,8 @@ export default class extends Controller {
   search(event) {
     const searchTitle = event.currentTarget.value;
 
-    
+    const parseUrl = `https://www.imdb.com/find/?q=${searchTitle.replace(" ", "%20")}&ref_=nv_sr_sm`;
+
     // const currentUrl = window.location.href;
     // const url = `${currentUrl}?query=${searchTitle.replace(" ", "+")}`
     // console.log(url);
