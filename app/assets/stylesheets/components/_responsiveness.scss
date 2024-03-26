@@ -24,6 +24,7 @@
     display: none;
   }
 
+
   // forms
   .form {
     width: 90%;
@@ -39,9 +40,13 @@
     height: 393px;
     margin-right: 10px;
   }
-
+  
   .card-trip-infos p{
     font-size: 15px;
+  }
+
+  .card-trip > img {
+    height: 20rem;
   }
   // navbar
   .nav-item.dropdown .avatar{
