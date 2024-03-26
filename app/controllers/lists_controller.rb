@@ -10,6 +10,7 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @bookmark = Bookmark.new
     @movies = Movie.where.not(id: @list.movies).order(:title)
+    @user_lists = List.all.where(user: current_user).where.not(id: @list.id)
     if params[:query].present?
       @movies = @movies.where("title ILIKE ?", "%#{params[:query]}%")
     end

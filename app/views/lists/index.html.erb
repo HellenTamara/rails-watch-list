@@ -58,6 +58,23 @@
                 <div>
                   <h2><%= bookmark.movie.title %></h2>
                   <p>Rating: <%= bookmark.movie.rating.to_f.ceil(1) %>/10</p>
+                  <div class="dropdown">
+                    <button class="btn text-light add-list-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      + Add to your list
+                    </button>
+                    <ul class="dropdown-menu">
+                      <% @lists.each do |list| %>
+                        <% if list != bookmark.list %>
+                          <li>
+                            <%= form_for([list, Bookmark.new]) do |f| %>
+                              <%= f.hidden_field :movie_id, value: bookmark.movie.id %>
+                              <%= f.submit list.name, class: "form-btn" %>
+                            <% end %>
+                          </li>
+                        <% end %>
+                      <% end %>
+                    </ul>
+                  </div>
                 </div>
               </div>
             </div>
