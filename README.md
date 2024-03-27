@@ -1,6 +1,6 @@
 # MovieMix
 
-<img src="https://i.ibb.co/VNn8B4r/movie-mix-2c56b083c637-herokuapp-com-lists-High-Res-2-Large.jpg" alt="movie-mix-2c56b083c637-herokuapp-com-lists-High-Res-2-Large" border="0" width="100%">
+<img src="https://i.ibb.co/ZYQb44X/movie-mix-mock-github.png" alt="movie-mix-mock-github" border="0" width="100%">
 
 
 ## Introduction
